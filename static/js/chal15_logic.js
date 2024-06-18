@@ -77,16 +77,20 @@ function chooseColor(depth) {
 
 })
 
-let legend = L.control({position:"bottomright"});
-            legend.onAdd = function(map){ 
-            var div = L.DomUtil.create('div', 'info legend');
-            var categories = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
-            var colors = ["#00FF00","#FFFF00","#FFD700","#FFA500","#FF4500"];
-            
-            for(var i=0;i<categories.length; i++){
-            div.innerHTML +=
+// Create a legend control
+var legend = L.control({ position: "bottomright" });
+// Define what happens when the legend is added to the map
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    var categories = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
+    var colors = ["#00FF00", "#FFFF00", "#FFD700", "#FFA500", "#FF4500"];
+    // Loop through each category and create a label with a colored square for each
+    for (var i = 0; i < categories.length; i++) {
+        div.innerHTML +=
             '<i style="background:' + colors[i] + '"></i> ' +
             categories[i] + '<br>';
-            }
-            return div;
-            legend.addTo(map)};
+    }
+    return div;
+};
+// Add the legend to the map
+legend.addTo(map);
