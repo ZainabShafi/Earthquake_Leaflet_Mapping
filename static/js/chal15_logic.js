@@ -80,10 +80,13 @@ function chooseColor(depth) {
 // Create a legend control
 var legend = L.control({ position: "bottomright" });
 // Define what happens when the legend is added to the map
-legend.onAdd = function (map) {
+legend.onAdd = function() {
     var div = L.DomUtil.create('div', 'info legend');
+    var title = "Earth Quake Depth";
     var categories = ["-10-10", "10-30", "30-50", "50-70", "70-90", "90+"];
-    var colors = ["#00FF00", "#FFFF00", "#FFD700", "#FFA500", "#FF4500"];
+    var colors = ["#00FF00", "#FFFF00", "#FFD700", "#FFA500", "#FF4500", "#FF0000" ];
+// adding legend title: 
+div.innerHTML += '<strong>' + title + '</strong><br>';
     // Loop through each category and create a label with a colored square for each
     for (var i = 0; i < categories.length; i++) {
         div.innerHTML +=
@@ -93,4 +96,4 @@ legend.onAdd = function (map) {
     return div;
 };
 // Add the legend to the map
-legend.addTo(map);
+legend.addTo(myMap);
